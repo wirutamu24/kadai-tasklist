@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index
     @tasks = Task.all
@@ -48,12 +48,12 @@ class TasksController < ApplicationController
 
   # Strong Parameter
   
-  def set_message
+  def set_task
     @task = task.find(params[:id])
   end
   
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :status)
   end
   
 end
